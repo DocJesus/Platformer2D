@@ -1,0 +1,15 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: NextLevelScreenAC
+  m_Controller: {fileID: 9100000, guid: 77270df7ff9eeba4c951f97aea45f214, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 0ce72a5b425dc3146a78e0a12a0326fe, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 0f8cd8566349b854e9ac3ffb686241e6, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: be3d09e04227f2544be0f9f6897332a1, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: eda99294858937a459c9b0fdccf0d259, type: 2}
