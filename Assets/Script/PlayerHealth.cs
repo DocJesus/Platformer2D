@@ -63,24 +63,9 @@ public class PlayerHealth : MonoBehaviour
         }
     }
 
-    public void ActivatePlayer()
-    {
-        MovePlayer.instance.rig.bodyType = RigidbodyType2D.Dynamic;
-        MovePlayer.instance.playerCollider.enabled = true;
-        MovePlayer.instance.enabled = true;
-    }
-
-    public void DesactivatePlayer()
-    {
-        MovePlayer.instance.Stop();
-        MovePlayer.instance.rig.bodyType = RigidbodyType2D.Kinematic;
-        MovePlayer.instance.playerCollider.enabled = false;
-        MovePlayer.instance.enabled = false;
-    }
-
     public void Die()
     {
-        DesactivatePlayer();
+        MovePlayer.instance.DesactivatePlayer();
         MovePlayer.instance.animator.SetTrigger("Death");
         //lancer les trigger du fade pour un écran de gameOver
     }

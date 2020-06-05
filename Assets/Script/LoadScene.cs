@@ -33,7 +33,7 @@ public class LoadScene : MonoBehaviour
     {
         fadeSystem.SetTrigger("FadeIn");
         endLevelScreen.SetTrigger("FadeIn");
-        PlayerHealth.instance.DesactivatePlayer();
+        MovePlayer.instance.DesactivatePlayer();
         yield return new WaitForSeconds(0.5f);
  
         while (!Input.GetKeyDown(KeyCode.Space))
@@ -43,7 +43,7 @@ public class LoadScene : MonoBehaviour
 
         fadeSystem.SetTrigger("FadeOut");
         endLevelScreen.SetTrigger("FadeOut");
-        PlayerHealth.instance.ActivatePlayer();
+        MovePlayer.instance.ActivatePlayer();
         SceneManager.LoadScene(sceneName);
     }
 }

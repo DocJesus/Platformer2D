@@ -79,13 +79,29 @@ public class MovePlayer : MonoBehaviour
 
     public void Stop()
     {
-        Movement(0);
-        Climb(0);
+        rig.velocity = new Vector2(0, 0);
+        animator.SetFloat("Speed", 0);
+        animator.SetBool("IsClimbing", false);
+    }
+
+    public void ActivatePlayer()
+    {
+        rig.bodyType = RigidbodyType2D.Dynamic;
+        playerCollider.enabled = true;
+        instance.enabled = true;
+    }
+
+    public void DesactivatePlayer()
+    {
+        Stop();
+        rig.bodyType = RigidbodyType2D.Kinematic;
+        playerCollider.enabled = false;
+        enabled = false;
     }
 
     void Movement(float _horizontal)
     {
-        Vector3 targetVelocity = new Vector2(_horizontal, rig.velocity.y);    
+        Vector3 targetVelocity = new Vector2(_horizontal, rig.velocity.y);
         rig.velocity = Vector3.SmoothDamp(rig.velocity, targetVelocity, ref velocity, .05f);
 
         if (isJumping)
