@@ -42,6 +42,8 @@ public class PlayerHealth : MonoBehaviour
     {
         if ((currentHealth + _heal) <= maxHealth)
             currentHealth += _heal;
+        else
+            currentHealth = maxHealth;
         healthBar.SetHealth(currentHealth);
     }
 
@@ -68,6 +70,15 @@ public class PlayerHealth : MonoBehaviour
         MovePlayer.instance.DesactivatePlayer();
         MovePlayer.instance.animator.SetTrigger("Death");
         //lancer les trigger du fade pour un écran de gameOver
+        GameOverManager.instance.OnPlayerDeath();
+    }
+
+    public void Respawn()
+    {
+        MovePlayer.instance.ActivatePlayer();
+        MovePlayer.instance.animator.SetTrigger("Respawn");
+        currentHealth = maxHealth;
+        healthBar.SetHealth(currentHealth);
     }
 
     public IEnumerator InvincibilityFlash()

@@ -9,6 +9,7 @@ TagManager:
   - FadeSystem
   - PlayerSpawn
   - NextLevelScreen
+  - Ladder
   layers:
   - Default
   - TransparentFX

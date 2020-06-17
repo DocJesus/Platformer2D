@@ -7,7 +7,7 @@ public class LoadScene : MonoBehaviour
 {
     public string sceneName;
     private Animator fadeSystem;
-    private Animator endLevelScreen;
+    private Animator nextLevelAnimator;
     private NextLevelScreen nextLevelScreen;
 
     private void Awake()
@@ -15,7 +15,7 @@ public class LoadScene : MonoBehaviour
         fadeSystem = GameObject.FindGameObjectWithTag("FadeSystem").GetComponent<Animator>();
 
         GameObject toto = GameObject.FindGameObjectWithTag("NextLevelScreen");
-        endLevelScreen = toto.GetComponent<Animator>();
+        nextLevelAnimator = toto.GetComponent<Animator>();
         nextLevelScreen = toto.GetComponent<NextLevelScreen>();
     }
 
@@ -32,7 +32,7 @@ public class LoadScene : MonoBehaviour
     public IEnumerator loadNextScene()
     {
         fadeSystem.SetTrigger("FadeIn");
-        endLevelScreen.SetTrigger("FadeIn");
+        nextLevelAnimator.SetTrigger("FadeIn");
         MovePlayer.instance.DesactivatePlayer();
         yield return new WaitForSeconds(0.5f);
  
@@ -42,7 +42,8 @@ public class LoadScene : MonoBehaviour
         }
 
         fadeSystem.SetTrigger("FadeOut");
-        endLevelScreen.SetTrigger("FadeOut");
+        nextLevelAnimator.SetTrigger("FadeOut");
+        Inventory.instance.Initialize();
         MovePlayer.instance.ActivatePlayer();
         SceneManager.LoadScene(sceneName);
     }
